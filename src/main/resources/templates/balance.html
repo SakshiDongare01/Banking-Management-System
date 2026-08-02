@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Check Balance</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+
+<div class="card shadow">
+
+<div class="card-header bg-info text-white">
+
+<h2>Check Balance</h2>
+
+</div>
+
+<div class="card-body">
+
+<form action="/balance" method="post">
+
+<div class="mb-3">
+
+<label>Account Number</label>
+
+<input type="number"
+       name="accountNo"
+       class="form-control"
+       required>
+
+</div>
+
+<button class="btn btn-primary">
+Check Balance
+</button>
+
+<a href="/" class="btn btn-secondary">
+Home
+</a>
+
+</form>
+
+<hr>
+
+<div th:if="${account != null}">
+
+<h4 class="text-success">
+
+Account Holder:
+<span th:text="${account.name}"></span>
+
+</h4>
+
+<h3>
+
+Current Balance :
+
+₹ <span th:text="${account.balance}"></span>
+
+</h3>
+
+</div>
+
+<div th:if="${account == null}">
+
+<p class="text-danger">
+
+Account Not Found
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

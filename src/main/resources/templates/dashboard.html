@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+
+<h1 class="text-center text-primary">
+🏦 Banking Dashboard
+</h1>
+
+<br>
+
+<div class="row">
+
+<div class="col-md-4">
+
+<div class="card bg-primary text-white">
+
+<div class="card-body">
+
+<h4>Total Accounts</h4>
+
+<h2 th:text="${accounts}"></h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card bg-success text-white">
+
+<div class="card-body">
+
+<h4>Total Balance</h4>
+
+<h2 th:text="${balance}"></h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card bg-warning text-dark">
+
+<div class="card-body">
+
+<h4>Total Transactions</h4>
+
+<h2 th:text="${transactions}"></h2>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="text-center">
+
+<a href="/" class="btn btn-secondary">Home</a>
+
+<a href="/accounts" class="btn btn-primary">View Accounts</a>
+
+<a href="/transactions" class="btn btn-success">Transaction History</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

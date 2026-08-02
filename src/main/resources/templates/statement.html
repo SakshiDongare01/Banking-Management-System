@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Account Statement</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+
+<div class="card shadow">
+
+<div class="card-header bg-dark text-white">
+
+<h2 class="text-center">🏦 Account Statement</h2>
+
+</div>
+
+<div class="card-body">
+
+<form action="/statement" method="post">
+
+<div class="mb-3">
+
+<label class="form-label"><b>Account Number</b></label>
+
+<input
+type="number"
+name="accountNo"
+class="form-control"
+placeholder="Enter Account Number"
+required>
+
+</div>
+
+<div class="text-center">
+
+<button class="btn btn-primary">
+
+Show Statement
+
+</button>
+
+<a href="/" class="btn btn-secondary">
+
+Home
+
+</a>
+
+</div>
+
+</form>
+
+<hr>
+
+<div th:if="${transactions != null}">
+
+<h4 class="text-center text-success mb-3">
+
+Statement for Account :
+<span th:text="${accountNo}"></span>
+
+</h4>
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>Date</th>
+
+<th>Transaction Type</th>
+
+<th>Amount</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr th:each="t : ${transactions}">
+
+<td th:text="${t.date}"></td>
+
+<td th:text="${t.type}"></td>
+
+<td th:text="${t.amount}"></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<div class="text-center mt-4">
+
+<form action="/download" method="get">
+
+<input
+type="hidden"
+name="accountNo"
+th:value="${accountNo}">
+
+<button class="btn btn-danger">
+
+📄 Download PDF
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<div th:if="${transactions != null and #lists.isEmpty(transactions)}">
+
+<div class="alert alert-warning text-center">
+
+No Transactions Found.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
